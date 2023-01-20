@@ -1,0 +1,27 @@
+{
+    "patient_id": "123456",
+    "timestamp": "2022-12-01T10:30:00Z",
+    "heart_rate": 72,
+    "blood_pressure": {
+        "systolic": 120,
+        "diastolic": 80
+    },
+    "ecg_reading": {
+        "rr_interval": 800,
+        "p_wave": 0.05,
+        "qrs_complex": 0.1,
+        "t_wave": 0.2
+    },
+    "oxygen_saturation": 96,
+    "heart_rate_variability": {
+        "mean_rr": 792,
+        "sdnn": 24,
+        "rmssd": 36
+    },
+    "blood_chemistry": {
+        "ldl": 130,
+        "hdl": 40,
+        "triglycerides": 150,
+        "total_cholesterol": 220
+    }
+}
