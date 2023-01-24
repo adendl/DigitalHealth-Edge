@@ -1,20 +1,20 @@
-# Use an official Python runtime as the base image
-FROM python:3.9
+# Use an official Node.js runtime as the base image
+FROM node:14-alpine
 
-# Set the working directory
-WORKDIR /app
+# Create app directory
+WORKDIR /usr/src/app
 
-# Copy the requirements file
-COPY requirements.txt ./
+# Copy package.json and package-lock.json
+COPY package*.json ./
 
-# Install the required packages
-RUN pip install --no-cache-dir -r requirements.txt
+# Install app dependencies
+RUN npm install
 
-# Copy the application files
+# Copy app source
 COPY . .
 
-# Expose the port the application runs on
+# Expose port 3000
 EXPOSE 3000
 
-# Run the application
-CMD ["python", "main.py"]
+# Start the app
+CMD [ "node", "index.js" ]

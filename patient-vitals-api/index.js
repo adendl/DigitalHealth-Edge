@@ -9,6 +9,7 @@ app.use(bodyParser.json());
 
 // connect to the MQTT broker
 const client = mqtt.connect(`${hostUrl}:1883`)
+console.log(client)
 console.log("Connected to the client");
 
 app.post('/vitals', (req, res) => {
