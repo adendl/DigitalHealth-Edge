@@ -2,6 +2,8 @@ const express = require('express');
 const request = require('request');
 const app = express();
 
+const hostUrl = process.env.HOSTURL
+
     async function sendRequest(interval) {
         while (true)
         {
@@ -35,7 +37,7 @@ const app = express();
             
             await sleep(interval)
             request.post({
-                url: 'http://localhost:3000/vitals',
+                url: `${hostUrl}/vitals`,
                 json: patientData
             }, (error, response, body) => {
                 if (error) {

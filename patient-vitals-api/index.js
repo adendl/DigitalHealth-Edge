@@ -1,32 +1,17 @@
 const express = require('express');
-const kafka = require('kafka-node');
+const mqtt = require('mqtt');
 const bodyParser = require('body-parser');
 
 const app = express();
 app.use(bodyParser.json());
 
-const client = new kafka.KafkaClient({
-  kafkaHost: 'localhost:9092'
-});
-const producer = new kafka.Producer(client);
+// connect to the MQTT broker
+const client = mqtt.connect('mqtt://localhost:1883');
 
 app.post('/vitals', (req, res) => {
   const vitals = req.body;
-
-  const payload = [{
-    topic: 'vitals_topic',
-    messages: JSON.stringify(vitals)
-  }];
-
-  res.status(200).send(payload);
- /* producer.send(payload, (err, data) => {
-    if (err) {
-      console.log(err);
-      res.status(500).send(err);
-    } else {
-      res.status(201).send(data);
-    }
-   }); */
+  client.publish('vitals_topic', JSON.stringify(vitals));
+  res.status(200).send({ message: 'Vitals sent to topic' });
 });
 
 app.listen(3000, () => {
