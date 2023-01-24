@@ -10,6 +10,10 @@ client.on('connect', () => {
         if (!err) {
             console.log('Successfully subscribed to vitals_topic');
         }
+        if (err)
+        {
+            console.log(err);
+        }
     });
 });
 
