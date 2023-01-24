@@ -3,6 +3,8 @@ const mqtt = require('mqtt');
 const HOSTURL = process.env.HOSTURL;
 const client = mqtt.connect(HOSTURL);
 
+console.log("application starting....");
+
 client.on('connect', () => {
     client.subscribe('vitals_topic', (err) => {
         if (!err) {
@@ -16,4 +18,4 @@ client.on('message', (topic, message) => {
         const vitals = JSON.parse(message);
         console.log(vitals);
     }
-});
+});z
