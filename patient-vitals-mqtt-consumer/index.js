@@ -22,4 +22,4 @@ client.on('message', (topic, message) => {
         const vitals = JSON.parse(message);
         console.log(vitals);
     }
-});z
+});
