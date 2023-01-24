@@ -8,3 +8,7 @@ Microshift for deploying microservices on edge devices
 Node.js for the microservice that receives and processes the vitals data
 Python for the application that consumes the data from Kafka topic and uses AI/ML model
 Scikit-learn library for machine learning
+
+![alt text](https://github.com/adendl/DigitalHealth-Edge/blob/main/images/Health%20AI%20Reference%20Architecture.png)
+
+
