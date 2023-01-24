@@ -1,18 +1,17 @@
 import json
 from kafka import KafkaConsumer
+from pymongo import MongoClient
 
-# Set up Kafka consumer
-consumer = KafkaConsumer('vitals_topic', bootstrap_servers='localhost:9092')
+# Create a Kafka consumer
+consumer = KafkaConsumer('vitals_topic',
+                         bootstrap_servers='localhost:9092',
+                         value_deserializer=lambda x: json.loads(x.decode('utf-8')))
 
-# Open the local JSON file for appending
-with open('vitals_information.json', 'a') as json_file:
-    for message in consumer:
-        # Deserialize the JSON data
-        data = json.loads(message.value)
-        
-        # Print the data
-        print(data)
-        
-        # Write the data to the local JSON file
-        json.dump(data, json_file)
-        json_file.write('\n')
+# Connect to MongoDB
+client = MongoClient('mongodb://localhost:27017/')
+db = client['vitals_db']
+collection = db['vitals_collection']
+
+for message in consumer:
+    # Insert the message value (the json data) as a new document in the collection
+    collection.insert_one(message.value)
