@@ -20,8 +20,37 @@ conn = psycopg2.connect(
     database="database"
 )
 
+def create_table(cur, conn):
+    # Define the table structure
+    table_query = """CREATE TABLE IF NOT EXISTS vitals_table
+                    (patient_id text, 
+                     timestamp timestamp, 
+                     heart_rate integer, 
+                     systolic integer, 
+                     diastolic integer, 
+                     rr_interval integer, 
+                     p_wave double precision, 
+                     qrs_complex double precision, 
+                     t_wave double precision, 
+                     oxygen_saturation integer, 
+                     mean_rr integer, 
+                     sdnn integer, 
+                     rmssd integer, 
+                     ldl integer, 
+                     hdl integer, 
+                     triglycerides integer, 
+                     total_cholesterol integer);"""
+    # Execute the query
+    cur.execute(table_query)
+    # Commit the changes
+    conn.commit()
+    # Close cursor
+
+
 # Create cursor
 cur = conn.cursor()
+
+create_table(cur, conn)
 
 # define the callback function
 def on_message(client, userdata, message):
