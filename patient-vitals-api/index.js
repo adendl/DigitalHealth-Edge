@@ -1,6 +1,6 @@
-import express from 'express';
-import kafka from 'kafka-node';
-import bodyParser from 'body-parser';
+const express = require('express');
+const kafka = require('kafka-node');
+const bodyParser = require('body-parser');
 
 const app = express();
 app.use(bodyParser.json());
@@ -18,14 +18,15 @@ app.post('/vitals', (req, res) => {
     messages: JSON.stringify(vitals)
   }];
 
-  producer.send(payload, (err, data) => {
+  res.status(200).send(payload);
+ /* producer.send(payload, (err, data) => {
     if (err) {
       console.log(err);
       res.status(500).send(err);
     } else {
       res.status(201).send(data);
     }
-  });
+   }); */
 });
 
 app.listen(3000, () => {
