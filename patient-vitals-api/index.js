@@ -17,7 +17,7 @@ app.post('/vitals', async (req, res) => {
   try {
     await producer.connect();
     await producer.send({
-        topic: 'vitals_topic',
+        topic: 'vitals',
         messages: [{ value: JSON.stringify(vitals) }],
     });
     res.status(200).send({ message: vitals });
