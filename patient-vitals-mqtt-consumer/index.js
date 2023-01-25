@@ -1,25 +1,21 @@
-const mqtt = require('mqtt');
+const { Kafka } = require('kafkajs');
 
 const HOSTURL = process.env.HOSTURL;
-const client = mqtt.connect(HOSTURL);
+const kafka = new Kafka({
+  clientId: 'my-app',
+  brokers: [HOSTURL],
+});
+const consumer = kafka.consumer({ groupId: 'test-group' });
 
-console.log("application starting....");
-
-client.on('connect', () => {
-    client.subscribe('vitals_topic', (err) => {
-        if (!err) {
-            console.log('Successfully subscribed to vitals_topic');
-        }
-        if (err)
-        {
-            console.log(err);
-        }
+const run = async () => {
+    await consumer.connect();
+    await consumer.subscribe({ topic: 'vitals_topic'});
+  
+    await consumer.run({
+        eachMessage: async ({ topic, partition, message }) => {
+            const vitals = JSON.parse(message.value);
+            console.log(vitals);
+        },
     });
-});
-
-client.on('message', (topic, message) => {
-    if (topic === 'vitals_topic') {
-        const vitals = JSON.parse(message);
-        console.log(vitals);
-    }
-});
+};
+run().catch(console.error);

@@ -9,6 +9,6 @@
   "author": "Aden de Leeuw",
   "license": "ISC",
   "dependencies": {
-    "mqtt": "^4.3.7"
+    "kafkajs": "^2.2.3"
   }
 }
