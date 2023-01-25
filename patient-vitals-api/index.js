@@ -21,6 +21,7 @@ app.post('/vitals', async (req, res) => {
         messages: [{ value: JSON.stringify(vitals) }],
     });
     res.status(200).send({ message: vitals });
+    console.log("message sent");
   } catch (err) {
     console.log(err);
     res.status(500).send({ message: err });
