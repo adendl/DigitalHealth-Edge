@@ -1,19 +1,24 @@
 import json
 import paho.mqtt.client as mqtt
 import psycopg2
+import os
 
 # create an MQTT client
 client = mqtt.Client()
 
+hostUrl = os.environ.get('HOSTURL')
+messageUrl = os.environ.get('MQTT')
+
+
 # Connect to MQTT broker
-client.connect("localhost", 1883)
+client.connect("http://eclipse-mosquitto-digitalhealth-edge.apps-crc.testing", 1883)
 
 # subscribe to topic
 client.subscribe("vitals_topic")
 
 # Connect to Postgres
 conn = psycopg2.connect(
-    host="hostname",
+    host=hostUrl,
     port = 5432,
     user="user",
     password="password",
