@@ -1,7 +1,11 @@
 const express = require('express');
 const MongoClient = require('mongodb').MongoClient;
+const cors = require('cors');
+
 const app = express();
 
+
+app.use(cors())
 // Connection URL
 const url = process.env.DATABASE_URL;
 
@@ -19,7 +23,7 @@ client.connect(function(err) {
   // Routes
   app.get("/data", (req, res) => {
     // Find all documents in the "vitals" collection
-    db.collection("vitals").find({}).toArray(function(err, result) {
+    db.collection("vitals").find({}).limit(50).toArray(function(err, result) {
       if (err) throw err;
       res.json(result);
     });
