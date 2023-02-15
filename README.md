@@ -7,6 +7,6 @@ Red Hat Kafka for real-time data streaming
 Node.js for the microservice that receives and processes the vitals data
 Node.js for the application that consumes the data from Kafka topic and uses AI/ML model
 
-![alt text](https://github.com/adendl/DigitalHealth-Edge/blob/main/images/Health%20AI%20Reference%20Architecture%20Diagram.png)
+![alt text](https://github.com/adendl/DigitalHealth-Edge/blob/main/images/app_architecture.png)
 
 

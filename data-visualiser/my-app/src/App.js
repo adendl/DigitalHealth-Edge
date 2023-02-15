@@ -11,7 +11,7 @@ class ChartComponent extends Component {
     this.fetchData();
     setInterval(() => {
       this.fetchData();
-    }, 30000);
+    }, 1000);
   }
 
   fetchData() {
