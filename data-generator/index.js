@@ -3,6 +3,7 @@ const request = require('request');
 const app = express();
 
 const hostUrl = process.env.HOSTURL
+const timeoutTime = process.env.TIMEOUTTIME
 
     async function sendRequest(interval) {
         while (true)
@@ -57,4 +58,4 @@ const hostUrl = process.env.HOSTURL
         });
       }
 
-sendRequest(100);   
+sendRequest(timeoutTime);   
