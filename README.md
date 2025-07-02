@@ -1,14 +1,18 @@
 # Edge Health IoT Processing
-This project demonstrates how Red Hat technology such as OpenShift, Red Hat Kafka, and Microshift can be used on edge devices placed in hospitals or other clinical locations to process health IoT data closer to the source, minimizing privacy concerns as the data itself doesn't need to leave the clinical location, only masked data which would be used to improve and train the AI/ML model in the cloud.
+This project demonstrates how Red Hat technology such as Microshift & AMQ Streams (Kafka) can be used on edge devices placed in hospitals or other clinical locations to process health IoT data closer to the source. Yes.....Kafka at the edge (as opposed to MQTT - but it works well!)
 
 # Technologies Used
-Red Hat OpenShift for container orchestration and management
-Red Hat Kafka for real-time data streaming
-Microshift for deploying microservices on edge devices
-Node.js for the microservice that receives and processes the vitals data
-Python for the application that consumes the data from Kafka topic and uses AI/ML model
-Scikit-learn library for machine learning
+Application	Component
+Red Hat Microshift for container orchestration and management
+Patient Vitals Data Generator,	Node.js
+Patient Vitals API - Kafka Producer,	Node.js + Express
+Kafka Cluster,	Red Hat OpenShift Streams for Apache Kafka
+Kafka Web UI,	Kafdrop
+Kafka Consumer,	Python
+Database,	MongoDB
+Data Access API	Node.js, + Express
+Data Visualisation Frontend,	React + Highcharts
 
-![alt text](https://github.com/adendl/DigitalHealth-Edge/blob/main/images/Health%20AI%20Reference%20Architecture%20Diagram.png)
+![alt text](https://github.com/adendl/DigitalHealth-Edge/blob/main/images/app_architecture.png)
 
 
