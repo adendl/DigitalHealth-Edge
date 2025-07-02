@@ -1,5 +1,5 @@
 # Edge Health IoT Processing
-This project demonstrates how Red Hat technology such as Microshift & AMQ Streams (Kafka) can be used on edge devices placed in hospitals or other clinical locations to process health IoT data closer to the source.
+This project demonstrates how Red Hat technology such as Microshift & AMQ Streams (Kafka) can be used on edge devices placed in hospitals or other clinical locations to process health IoT data closer to the source. Yes.....Kafka at the edge (as opposed to MQTT - but it works well!)
 
 # Technologies Used
 Application	Component
